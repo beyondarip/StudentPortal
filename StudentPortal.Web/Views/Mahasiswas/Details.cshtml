@@ -1,42 +1,62 @@
 ﻿@model StudentPortal.Web.Models.Mahasiswa
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detail Mahasiswa";
 }
 
-<h1>Details</h1>
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="mb-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Detail Mahasiswa</h1>
+                <p class="mt-2 text-sm text-gray-600">Informasi lengkap mahasiswa</p>
+            </div>
+            <a asp-action="Index" 
+               class="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium text-sm rounded-lg transition-colors duration-200">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Kembali ke Daftar
+            </a>
+        </div>
+    </div>
 
-<div>
-    <h4>Mahasiswa</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NIM)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NIM)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nama)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nama)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Jurusan)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Jurusan)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TanggalLahir)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TanggalLahir)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <!-- Card -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900">Data Mahasiswa</h3>
+        </div>
+        <div class="px-6 py-6">
+            <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                <div>
+                    <dt class="text-sm font-medium text-gray-700">@Html.DisplayNameFor(model => model.NIM)</dt>
+                    <dd class="mt-1 text-gray-900">@Html.DisplayFor(model => model.NIM)</dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-700">@Html.DisplayNameFor(model => model.Nama)</dt>
+                    <dd class="mt-1 text-gray-900">@Html.DisplayFor(model => model.Nama)</dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-700">@Html.DisplayNameFor(model => model.Jurusan)</dt>
+                    <dd class="mt-1 text-gray-900">@Html.DisplayFor(model => model.Jurusan)</dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-700">@Html.DisplayNameFor(model => model.TanggalLahir)</dt>
+                    <dd class="mt-1 text-gray-900">@Html.DisplayFor(model => model.TanggalLahir)</dd>
+                </div>
+            </dl>
+            <div class="mt-8 flex items-center space-x-4">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="inline-flex items-center px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white font-medium text-sm rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z" />
+                    </svg>
+                    Edit
+                </a>
+                <a asp-action="Index" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200">
+                    Kembali
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

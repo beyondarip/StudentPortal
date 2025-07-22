@@ -1,47 +1,92 @@
 ﻿@model StudentPortal.Web.Models.Mahasiswa
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Mahasiswa";
 }
 
-<h1>Edit</h1>
-
-<h4>Mahasiswa</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="NIM" class="control-label"></label>
-                <input asp-for="NIM" class="form-control" />
-                <span asp-validation-for="NIM" class="text-danger"></span>
+<div class="animate-fade-in">
+    <!-- Page Header -->
+    <div class="mb-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Edit Mahasiswa</h1>
+                <p class="mt-2 text-sm text-gray-600">Perbarui informasi mahasiswa di bawah ini</p>
             </div>
-            <div class="form-group">
-                <label asp-for="Nama" class="control-label"></label>
-                <input asp-for="Nama" class="form-control" />
-                <span asp-validation-for="Nama" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Jurusan" class="control-label"></label>
-                <input asp-for="Jurusan" class="form-control" />
-                <span asp-validation-for="Jurusan" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TanggalLahir" class="control-label"></label>
-                <input asp-for="TanggalLahir" class="form-control" />
-                <span asp-validation-for="TanggalLahir" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+            <a asp-action="Index" 
+               class="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium text-sm rounded-lg transition-colors duration-200">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Kembali ke Daftar
+            </a>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <!-- Form Card -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900">Formulir Edit Data Mahasiswa</h3>
+            <p class="mt-1 text-sm text-gray-600">Pastikan semua data diisi dengan benar</p>
+        </div>
+        <div class="px-6 py-6">
+            <form asp-action="Edit" class="space-y-6">
+                <div asp-validation-summary="ModelOnly" class="bg-red-50 border border-red-200 rounded-md p-4 text-red-600 text-sm hidden" id="validation-summary"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- NIM Field -->
+                    <div class="space-y-2">
+                        <label asp-for="NIM" class="block text-sm font-medium text-gray-700">
+                            @Html.DisplayNameFor(m => m.NIM)
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="NIM" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200" placeholder="Masukkan NIM mahasiswa" />
+                        <span asp-validation-for="NIM" class="text-red-600 text-sm"></span>
+                    </div>
+                    <!-- Nama Field -->
+                    <div class="space-y-2">
+                        <label asp-for="Nama" class="block text-sm font-medium text-gray-700">
+                            @Html.DisplayNameFor(m => m.Nama)
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="Nama" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200" placeholder="Masukkan nama lengkap" />
+                        <span asp-validation-for="Nama" class="text-red-600 text-sm"></span>
+                    </div>
+                    <!-- Jurusan Field -->
+                    <div class="space-y-2">
+                        <label asp-for="Jurusan" class="block text-sm font-medium text-gray-700">
+                            @Html.DisplayNameFor(m => m.Jurusan)
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="Jurusan" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200" placeholder="Contoh: Teknik Informatika" />
+                        <span asp-validation-for="Jurusan" class="text-red-600 text-sm"></span>
+                    </div>
+                    <!-- Tanggal Lahir Field -->
+                    <div class="space-y-2">
+                        <label asp-for="TanggalLahir" class="block text-sm font-medium text-gray-700">
+                            @Html.DisplayNameFor(m => m.TanggalLahir)
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="TanggalLahir" type="date" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200" />
+                        <span asp-validation-for="TanggalLahir" class="text-red-600 text-sm"></span>
+                    </div>
+                </div>
+                <!-- Form Actions -->
+                <div class="pt-6 border-t border-gray-200">
+                    <div class="flex items-center justify-end space-x-4">
+                        <a asp-action="Index" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200">
+                            Batal
+                        </a>
+                        <button type="submit" class="inline-flex items-center px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white font-medium text-sm rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors duration-200">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Simpan Perubahan
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
